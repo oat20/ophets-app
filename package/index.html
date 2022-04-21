@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPHETS PACKAGE</title>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                <div class="text-center">
+                    <img src="https://www.ph.mahidol.ac.th/upload/identity/logo-newnormal.jpg" class="img-responsive">
+                </div>
+        <h1 class="text-center">Select Package</h1>
+        <hr>
+        <form>
+            <div class="form-group">
+                <label>Customer ID</label>
+                <p class="form-control-static">OP001</p>
+            </div>
+
+                        <div class="form-group">
+                            <label>Customer Name</label>
+                            <p class="form-control-static">Mr. Demo Prototype</p>
+                        </div>
+
+                        <div class="form-group" id="checkPackage">
+                            <label>Services</label>
+                            <div class="checkbox">
+                            <label>
+                                <input type="checkbox" data-toggle="radio" value="" data-price2="100" name="subscribe">
+                                Package 1 (100 Baht)
+                            </label>
+                            </div>
+                            <div class="checkbox">
+                            <label>
+                                <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="200">
+                                Package 2 (200 Baht)
+                            </label>
+                            </div>
+                            <div class="checkbox">
+                            <label class="checkbox">
+                                <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="300">
+                                Package 3 (300 Baht)
+                            </label>
+                            </div>
+                            <div class="checkbox">
+                            <label>
+                                <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="400">
+                                Package 4 (400 Baht)
+                            </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="500">
+                                    Package 5 (500 Baht)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Summary Package</label>
+                            <p class="form-control-static" id="sumpackage">0 Baht</p>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block">Payment</button>
+        </form>
+        <hr>
+        <a href="#" class="btn btn-warning btn-block">Upload Slip</a>
+        </div>
+        <!-- col -->
+        </div>
+        <!-- row -->
+
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('input[name="subscribe"]').change(function () {
+                var receiptNos2 = $('input[name="subscribe"]:checked').map(function () {
+                    return $(this).data('price2');
+                }).get();
+                console.log(receiptNos2);
+
+                var alertCount = $('#checkPackage [name="subscribe"]:checked').length;
+                console.log(alertCount);
+
+                const sum = receiptNos2.reduce((partialSum, a) => partialSum + a, 0);
+                console.log(Intl.NumberFormat().format(sum));
+
+                $('#sumpackage').html(Intl.NumberFormat().format(sum) + ' Baht');
+            });
+
+        })
+    </script>
+</body>
+</html>
