@@ -99,20 +99,20 @@
             });
 
             $('button').click(function(){
-                Swal.fire(
-                    'Confirm Payment',
-                    '',
-                    'success'
-                ).then((result) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Confirm Payment',
+                    showCancelButton: true,
+                    confirmButtonText: 'OK',
+                }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     console.log(result);
                     if (result.isConfirmed) {
                         //Swal.fire('Saved!', '', 'success')
                         location.href = "./payment.html";
                     } 
-                });
-                
-            })
+                }); 
+            });
 
         });
     </script>
