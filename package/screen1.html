@@ -10,11 +10,14 @@
 <body>
     <div class="container">
     
+        <h1 class="text-center">Select Package</h1>
+        <hr>
+
+        <form>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                <h1 class="text-center">Select Package</h1>
-                <hr>
-                <form>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                
+                
                     <div class="form-group">
                         <label>เลขที่</label>
                         <input type="text" class="form-control">
@@ -81,17 +84,19 @@
                             </label>
                         </div>
                     </div>
-    
-                    <div class="form-group">
-                        <label>Total Amount</label>
-                        <p class="form-control-static" id="sumpackage">0 Baht</p>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-block">Calculate</button>
-                </form>
+            </div>
+            <!-- col -->
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="alert alert-info text-center">
+                    <h4>Total Amount</h4>
+                    <h1 id="sumpackage">0 Baht</h1>
+                </div>
             </div>
             <!-- col -->
         </div>
         <!-- row -->
+        <button type="button" class="btn btn-primary btn-block btn-lg">Calculate</button>
+        </form>
     
     </div>
     <!-- con -->
