@@ -8,114 +8,129 @@
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
     
         <h1 class="text-center">Select Package</h1>
         <hr>
 
-        <form id="frmSubmit" action="https://www.ph.mahidol.ac.th">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6">
-                
-                    <!--<div class="form-group">
-                        <label>เลขที่</label>
-                        <input type="text" class="form-control">
-                    </div>-->
-
+            <div class="col-md-2">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation"><a href="#">ค้นหาข้อมูลลูกค้า</a></li>
+                    <li role="presentation"><a href="#">บันทึกรายการชำระเงิน</a></li>
+                    <li role="presentation"><a href="#">พิมพ์ใบชำระเงิน</a></li>
+                </ul>
+            </div>
+            <!-- col -->
+            <div class="col-md-10">
+                <form id="frmSubmit" action="https://www.ph.mahidol.ac.th">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-6">
+                
+                            <!--<div class="form-group">
+                                        <label>เลขที่</label>
+                                        <input type="text" class="form-control">
+                                    </div>-->
+                
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control input-lg" name="cusName" required>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Surname</label>
+                                        <input type="text" class="form-control input-lg" name="cusSurname" required>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                            </div>
+                            <!-- row -->
+                
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control input-lg" name="cusName" required>
+                                <label>Company Name</label>
+                                <input type="text" class="form-control input-lg" name="comName" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label>Mobile Phone</label>
+                                <input type="tel" class="form-control input-lg" pattern="[0-9]{10}" name="mobile" required>
+                            </div>
+                
+                            <div class="form-group" id="checkPackage">
+                                <label>Package</label>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" data-toggle="radio" value="" data-price2="100" name="subscribe" required>
+                                        Package 1 (100 Baht)
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="200" required>
+                                        Package 2 (200 Baht)
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="300" required>
+                                        Package 3 (300 Baht)
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="400" required>
+                                        Package 4 (400 Baht)
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="500" required>
+                                        Package 5 (500 Baht)
+                                    </label>
+                                </div>
+                            </div>
+                
+                            <div class="form-group">
+                                <label>Payment</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="payment" id="optionsRadios1" value="QR Promptpay" required>
+                                        QR Promptpay
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="payment" id="optionsRadios1" value="Cash" required>
+                                        Cash
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <!-- col -->
                         <div class="col-xs-12 col-sm-12 col-md-6">
-                            <div class="form-group">
-                                <label>Surname</label>
-                                <input type="text" class="form-control input-lg" name="cusSurname" required>
+                            <div class="alert alert-info text-center">
+                                <h4>Total Amount</h4>
+                                <h1 id="sumpackage">0 Baht</h1>
+                                <input type="hidden" name="totalamount">
+                            </div>
+                            <div class="text-center">
+                                <img src="https://via.placeholder.com/300?text=QR+Promptpay" class="img-rounded img-responsive">
                             </div>
                         </div>
                         <!-- col -->
                     </div>
                     <!-- row -->
-                    
-                    <div class="form-group">
-                        <label>Company Name</label>
-                        <input type="text" class="form-control input-lg" name="comName" required>
-                    </div>
-    
-                    <div class="form-group">
-                        <label>Mobile Phone</label>
-                        <input type="tel" class="form-control input-lg" pattern="[0-9]{10}" name="mobile" required>
-                    </div>
-    
-                    <div class="form-group" id="checkPackage">
-                        <label>Package</label>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" data-toggle="radio" value="" data-price2="100" name="subscribe" required>
-                                Package 1 (100 Baht)
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="200" required>
-                                Package 2 (200 Baht)
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox">
-                                <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="300" required>
-                                Package 3 (300 Baht)
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="400" required>
-                                Package 4 (400 Baht)
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="500" required>
-                                Package 5 (500 Baht)
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Payment</label>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="payment" id="optionsRadios1" value="QR Promptpay" required>
-                                QR Promptpay
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="payment" id="optionsRadios1" value="Cash" required>
-                                Cash
-                            </label>
-                        </div>
-                    </div>
-            </div>
-            <!-- col -->
-            <div class="col-xs-12 col-sm-12 col-md-6">
-                <div class="alert alert-info text-center">
-                    <h4>Total Amount</h4>
-                    <h1 id="sumpackage">0 Baht</h1>
-                    <input type="hidden" name="totalamount">
-                </div>
-                
-                <img src="https://via.placeholder.com/300?text=QR+Promptpay" class="img-rounded img-responsive">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Calculate</button>
+                </form>
             </div>
             <!-- col -->
         </div>
         <!-- row -->
-        <button type="submit" class="btn btn-primary btn-block btn-lg">Calculate</button>
-        </form>
-    
+
     </div>
     <!-- con -->
     
@@ -124,6 +139,8 @@
     <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script>
         $(document).ready(function () {
+
+            $('.nav-stacked li:first').addClass('active');
 
             $('input[name="subscribe"]').change(function () {
                 var receiptNos2 = $('input[name="subscribe"]:checked').map(function () {
