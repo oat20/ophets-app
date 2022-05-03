@@ -10,15 +10,15 @@
 <body>
     <div class="container-fluid">
 
-        <h1 class="text-center">รายการชำระเงิน</h1>
+        <h1 class="text-center">รายงานยอดรวม</h1>
         <hr>
 
         <div class="row">
             <div class="col-md-2">
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation"><a href="./screen1.html">1. บันทึกรายการชำระเงิน</a></li>
-                    <li role="presentation"><a href="#">2. รายการชำระเงิน</a></li>
-                    <li role="presentation"><a href="./screen2-2.html">3. รายงานยอดรวม</a></li>
+                    <li role="presentation"><a href="./screen2-1.html">2. รายการชำระเงิน</a></li>
+                    <li role="presentation"><a href="#">3. รายงานยอดรวม</a></li>
                 </ul>
             </div>
             <!-- col -->
@@ -32,9 +32,9 @@
                                 <th>Datestamp</th>
                                 <th>Customer</th>
                                 <th>Tel</th>
+                                <th>Item</th>
                                 <th>Amount</th>
                                 <th>Payment</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,7 +63,7 @@
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('.nav-stacked li:eq(1)').addClass('active');
+            $('.nav-stacked li:eq(2)').addClass('active');
         });
     </script>
 </body>
