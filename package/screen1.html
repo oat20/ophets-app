@@ -9,27 +9,33 @@
 </head>
 <body>
     <div class="container-fluid">
+
+        <ul class="nav nav-pills nav-justified" style="margin-top: 10px;">
+            <li role="presentation"><a href="#">1. บันทึกรายการชำระเงิน</a></li>
+            <li role="presentation"><a href="./screen2-1.html">2. รายการชำระเงิน</a></li>
+            <li role="presentation"><a href="./screen2-2.html">3. รายงานยอดรวม</a></li>
+        </ul>
     
-        <h1 class="text-center">บันทึกรายการชำระเงิน</h1>
+        <!--<h1 class="text-center">บันทึกรายการชำระเงิน</h1>-->
         <hr>
 
         <div class="row">
-            <div class="col-md-2">
+            <!--<div class="col-md-2">
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation"><a href="#">1. บันทึกรายการชำระเงิน</a></li>
                     <li role="presentation"><a href="./screen2-1.html">2. รายการชำระเงิน</a></li>
                     <li role="presentation"><a href="./screen2-2.html">3. รายงานยอดรวม</a></li>
                 </ul>
-            </div>
+            </div>-->
             <!-- col -->
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <form id="frmSubmit" action="#" method="post">
-                    <div class="row">
+                    <div class="row" style="margin-bottom: 10px;">
                         <div class="col-xs-12 col-sm-12 col-md-6">
                 
                             <div class="form-group">
                                         <label>เลขที่</label>
-                                        <input type="text" class="form-control input-lg">
+                                        <input type="text" name="refid2" class="form-control input-lg">
                                     </div>
                 
                             <div class="row">
@@ -60,9 +66,40 @@
                                 <input type="tel" class="form-control input-lg" pattern="[0-9]{10}" name="mobile" required>
                             </div>
                 
+                            <div class="form-group">
+                                <label>Payment</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="payment" id="optionsRadios1" value="QR Promptpay" required>
+                                        QR Promptpay
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="payment" id="optionsRadios1" value="Cash" required>
+                                        Cash
+                                    </label>
+                                </div>
+                            </div>
+
+                            <center>
+                                <img src="https://via.placeholder.com/300?text=QR+Promptpay" class="img-thumbnail img-responsive">
+                            </center>
+                        </div>
+                        <!-- col -->
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <div class="alert alert-info text-center">
+                                <h4>Total Amount</h4>
+                                <h1 id="sumpackage">0 Baht</h1>
+                                <input type="hidden" name="totalamount">
+                            </div>
+
                             <div class="form-group" id="checkPackage">
                                 <label>Package</label>
-                                <div class="checkbox">
+                                <div id="packagelist">
+                                    ...
+                                </div>
+                                <!--<div class="checkbox">
                                     <label>
                                         <input type="checkbox" data-toggle="radio" value="" data-price2="100" name="subscribe" required>
                                         Package 1 (100 Baht)
@@ -91,35 +128,8 @@
                                         <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="500" required>
                                         Package 5 (500 Baht)
                                     </label>
-                                </div>
+                                </div>-->
                             </div>
-                
-                            <div class="form-group">
-                                <label>Payment</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="payment" id="optionsRadios1" value="QR Promptpay" required>
-                                        QR Promptpay
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="payment" id="optionsRadios1" value="Cash" required>
-                                        Cash
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- col -->
-                        <div class="col-xs-12 col-sm-12 col-md-6">
-                            <div class="alert alert-info text-center">
-                                <h4>Total Amount</h4>
-                                <h1 id="sumpackage">0 Baht</h1>
-                                <input type="hidden" name="totalamount">
-                            </div>
-                            <center>
-                                <img src="https://via.placeholder.com/350?text=QR+Promptpay" class="img-thumbnail img-responsive">
-                            </center>
                         </div>
                         <!-- col -->
                     </div>
@@ -147,7 +157,28 @@
     <script>
         $(document).ready(function () {
 
-            $('.nav-stacked li:first').addClass('active');
+            $('.nav-justified li:first').addClass('active');
+
+            //$('.nav-stacked li:first').addClass('active');
+
+            $.ajax({ 
+                "url": "./package_json.php", 
+                "method": "GET" 
+            }).done(function(response){
+                console.log(response);
+
+                var checkbox = '';
+                response.map(function(item, index){
+                    console.log(item);
+                    checkbox += '<div class="checkbox">';
+                    checkbox += '<label>';
+                    checkbox += '<input type="checkbox" value="" data-price2="'+item.price+'" name="subscribe" required>';
+                    checkbox += item.item+' ('+item.price+' Baht)';
+                    checkbox += '</label>';
+                    checkbox += '</div>';
+                });
+                $('#packagelist').html(checkbox);
+            });
 
             $('input[name="subscribe"]').change(function () {
                 var receiptNos2 = $('input[name="subscribe"]:checked').map(function () {
