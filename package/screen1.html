@@ -98,7 +98,6 @@
                                 <label>Package</label>
                                 <div id="packagelist">
                                     ...
-                                </div>
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" data-toggle="radio" value="" data-price2="100" name="subscribe" required>
@@ -128,6 +127,7 @@
                                         <input type="checkbox" data-toggle="radio" value="" name="subscribe" data-price2="500" required>
                                         Package 5 (500 Baht)
                                     </label>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
 
             //$('.nav-stacked li:first').addClass('active');
 
-            $.ajax({ 
+            /*$.ajax({ 
                 "url": "./package_json.php", 
                 "method": "GET" 
             }).done(function(response){
@@ -178,7 +178,7 @@
                     checkbox += '</div>';
                 });
                 $('#packagelist').html(checkbox);
-            });
+            });*/
 
             $('input[name="subscribe"]').change(function () {
                 var receiptNos2 = $('input[name="subscribe"]:checked').map(function () {
@@ -186,7 +186,7 @@
                 }).get();
                 console.log(receiptNos2);
 
-                var alertCount = $('#checkPackage [name="subscribe"]:checked').length;
+                var alertCount = $('#packagelist [name="subscribe"]:checked').length;
                 console.log(alertCount);
 
                 const sum = receiptNos2.reduce((partialSum, a) => partialSum + a, 0);
