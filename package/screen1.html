@@ -129,6 +129,7 @@
                                     </label>
                                 </div>
                                 </div>
+                                <!-- # -->
                             </div>
                         </div>
                         <!-- col -->
@@ -161,7 +162,7 @@
 
             //$('.nav-stacked li:first').addClass('active');
 
-            /*$.ajax({ 
+            $.ajax({ 
                 "url": "./package_json.php", 
                 "method": "GET" 
             }).done(function(response){
@@ -178,9 +179,26 @@
                     checkbox += '</div>';
                 });
                 $('#packagelist').html(checkbox);
-            });*/
 
-            $('input[name="subscribe"]').change(function () {
+                $('input[name="subscribe"]').change(function () {
+                    var receiptNos2 = $('input[name="subscribe"]:checked').map(function () {
+                        return $(this).data('price2');
+                    }).get();
+                    console.log(receiptNos2);
+
+                    var alertCount = $('#packagelist [name="subscribe"]:checked').length;
+                    console.log(alertCount);
+
+                    const sum = receiptNos2.reduce((partialSum, a) => partialSum + a, 0);
+                    console.log(sum);
+                    console.log(Intl.NumberFormat().format(sum));
+
+                    $('#sumpackage').html(Intl.NumberFormat().format(sum) + ' Baht');
+                    $('input[name="totalamount"]').val(sum);
+                });
+            });
+
+            /*$('input[name="subscribe"]').change(function () {
                 var receiptNos2 = $('input[name="subscribe"]:checked').map(function () {
                     return $(this).data('price2');
                 }).get();
@@ -195,7 +213,7 @@
 
                 $('#sumpackage').html(Intl.NumberFormat().format(sum) + ' Baht');
                 $('input[name="totalamount"]').val(sum);
-            });
+            });*/
 
             $('button').click(function () {
                 if($("input[name=cusName]").val() != '' &&
